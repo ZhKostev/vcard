@@ -1,5 +1,7 @@
 Vcard::Application.routes.draw do
 
+  devise_for :users
+
   get "support/change_language"
 
   root :to => 'home#index'
