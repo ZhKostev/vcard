@@ -1,2 +1,13 @@
 ru:
   hello: "Привет Мир!"
+  zhenya_kostev: Костев Евгений
+  speciality: квалифицированный Ruby on rails разработчик
+  about: Обо мне
+  about_desc: Коротко о себе
+  resume: Резюме
+  resume_desc: Профессиональные характеристики
+  contact: Связаться
+  contact_desc: Контактная информация
+  blog: Блог
+  blog_desc: Ruby on Rails блог
+  minsk: Минск

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
 <head>
-  <title>Vcard</title>
-  <%= stylesheet_link_tag    "application" %>
+  <title><%= t :zhenya_kostev %></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+
+<body class="background-carbon">
 
 <%= yield %>
-
 </body>
+
 </html>

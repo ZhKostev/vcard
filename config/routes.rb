@@ -1,9 +1,14 @@
 Vcard::Application.routes.draw do
 
+  get "support/change_language"
+
   root :to => 'home#index'
 
   scope "(:locale)", :locale => /en|ru/ do
     match '/' => 'home#index'
+    match '/about' => 'home#about'
+    match '/asd' => 'home#index'
+
   end
 
   # The priority is based upon order of creation:

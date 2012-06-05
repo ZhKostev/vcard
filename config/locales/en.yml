@@ -3,3 +3,15 @@
 
 en:
   hello: "Hello world"
+  zhenya_kostev: Zhenya Kostev
+  speciality: professional Ruby on Rails developer
+  about: About
+  about_desc: Brief info
+  resume: Resume
+  resume_desc: Personal Profile
+  contact: Contact
+  contact_desc: Get In Touch
+  blog: Blog
+  blog_desc: Blog about RoR
+  minsk: Minsk
+
