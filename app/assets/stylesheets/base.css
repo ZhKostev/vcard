@@ -26,14 +26,17 @@ body.background-mesh {
 
 body.background-wood {
     background-image: url('../image/background/wood.png');
+    background-repeat: repeat;
 }
 
 body.background-wood-2 {
     background-image: url('../image/background/wood2.png');
+    background-repeat: repeat;
 }
 
 body.background-wood-3 {
     background-image: url('../image/background/wood3.png');
+    background-repeat: repeat;
 }
 
 body.background-tiles {
@@ -344,7 +347,6 @@ div.header {
     height: 165px;
     margin-top: 51px;
     position: relative;
-    background: url('../image/header_light.png') 0px 0px no-repeat;
 }
 
 div.header h1 {
@@ -1048,7 +1050,6 @@ div.footer div.main {
     min-height: 43px;
     position: relative;
     padding: 25px 0px 25px 0px;
-    background: url('../image/footer_light.png') 0px 0px no-repeat;
     #margin-top: -13px;
 }
 
