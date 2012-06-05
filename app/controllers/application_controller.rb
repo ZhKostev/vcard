@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def save_return_url
-    session[:return_url] = request.url
+    session[:return_path] = request.path unless action_name == 'change_language'
   end
 end

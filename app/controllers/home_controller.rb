@@ -7,4 +7,20 @@ class HomeController < ApplicationController
   def about
     redirect_to "#{root_url}#{I18n.locale}#!/about" unless request.xhr?
   end
+
+  def resume
+    redirect_to "#{root_url}#{I18n.locale}#!/resume" unless request.xhr?
+  end
+
+  def contact
+    redirect_to "#{root_url}#{I18n.locale}#!/contact" unless request.xhr?
+  end
+
+  def change_language
+    if params[:change_language]
+      I18n.locale = params[:change_language]
+      redirect_to  "/#{I18n.locale}/#{session[:return_path].gsub(/(\/ru|\/en)/,'')}"
+    end
+  end
+
 end

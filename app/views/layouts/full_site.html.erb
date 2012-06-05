@@ -30,10 +30,10 @@
           <a href="mailto:zh.kostev@gmail.com">zh.kostev@gmail.com</a>
         </li>
         <li class="header-menu-russian">
-          <%= link_to '', "#{session[:return_url] ? session[:return_url].split('?').first : root_path}?locale=ru" %>
+          <%= link_to '', '/change_language?change_language=ru' %>
         </li>
         <li class="header-menu-english">
-          <%= link_to '', "#{session[:return_url] ? session[:return_url].split('?').first : root_path}?locale=en" %>
+          <%= link_to '', '/change_language?change_language=en' %>
         </li>
       </ul>
     </div>
@@ -59,19 +59,19 @@
         </a>
       </li>
       <li id="tab-2" class="green-document">
-        <a href="#!/portfolio">
+        <a href="#!/resume">
           <span class="title"><%= t :resume %></span>
           <span class="subtitle"><%= t :resume_desc %></span>
         </a>
       </li>
       <li id="tab-3" class="orange-mail">
-        <a href="#!/resume">
+        <a href="#!/contact">
           <span class="title"><%= t :contact %></span>
           <span class="subtitle"><%= t :contact_desc %><%=  %></span>
         </a>
       </li>
       <li id="tab-4" class="red-briefcase">
-        <a href="#!/contact">
+        <a href="#!/blog">
           <span class="title"><%= t :blog %></span>
           <span class="subtitle"><%= t :blog_desc %></span>
         </a>
@@ -128,10 +128,10 @@
     {
         var page=
         {
-            'about'         :   {tab:'tab-1',html:'/about',main:1,openStart:0},
-            'resume'        :   {tab:'tab-3',html:'/resume',main:1,openStart:0},
-            'contact'       :   {tab:'tab-4',html:'/contact',main:1,openStart:0},
-            'portfolio'     :   {tab:'tab-2',html:'page-2.html', main:1,openStart:0}
+            'about'         :   {tab:'tab-1',html:'/<%= I18n.locale %>/about',main:1,openStart:0},
+            'resume'        :   {tab:'tab-2',html:'/<%= I18n.locale %>/resume',main:1,openStart:0},
+            'contact'       :   {tab:'tab-3',html:'/<%= I18n.locale %>/contact',main:1,openStart:0},
+            'blog'          :   {tab:'tab-4',html:'/<%= I18n.locale %>/blog', main:1,openStart:0}
         };
 
         $('.cascade').cascade(page);
