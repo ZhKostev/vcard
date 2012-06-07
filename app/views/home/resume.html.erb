@@ -1,5 +1,5 @@
 <% if I18n.locale.to_sym == :ru %>
     Русская версия резюме
 <% else %>
-    English vesion resume
+    <%= render :partial => 'home/partials/english/resume_en' %>
 <% end %>

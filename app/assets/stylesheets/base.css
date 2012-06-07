@@ -10,7 +10,6 @@
 body {
     margin: 0px;
     padding: 0px;
-    padding-bottom: 20px;
     background-color: #252525;
     background-repeat: repeat-x;
     background-position: 0px 0px;
@@ -344,8 +343,7 @@ div.main {
 
 div.header {
     top: -1px;
-    height: 165px;
-    margin-top: 51px;
+    height: 145px;
     position: relative;
 }
 
@@ -419,7 +417,7 @@ div.header ul.header-menu li a:hover {
 /**************************************************************************/
 
 div.content {
-    height: 500px;
+    height: 490px;
 }
 
 /**************************************************************************/
@@ -1047,9 +1045,8 @@ div.footer hr.footer-line {
 
 div.footer div.main {
     top: -1px;
-    min-height: 43px;
     position: relative;
-    padding: 25px 0px 25px 0px;
+    padding: 15px 0;
     #margin-top: -13px;
 }
 
@@ -1164,3 +1161,6 @@ div.footer div.main ul.social-list li a.social-wordpress {
 div.footer div.main ul.social-list li a.social-soundcloud {
     background-image: url('../image/social-icon/social_soundcloud.png');
 }
+
+/*.jspVerticalBar {float: right;}*/
+/*.jspPane {float: left;}*/

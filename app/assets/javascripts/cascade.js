@@ -253,12 +253,6 @@ $this.cascade=$(cascade);
                             $this.showPreloader(false);
                             $this.showNavigation(true);
 
-                            jQuery.getScript('page/script/main.js',function()
-                            {
-                                if(scriptPath!='')
-                                    jQuery.getScript('page/script/'+scriptPath);
-                            });
-
                             $this.enable=true;
 
                             $this.previousPage=$this.currentPage;
