@@ -1162,5 +1162,18 @@ div.footer div.main ul.social-list li a.social-soundcloud {
     background-image: url('../image/social-icon/social_soundcloud.png');
 }
 
+span.label {
+    font-weight: bolder;
+    color: #9F9FF4;
+}
+
+.buttons {
+    width: 100%;
+    display: inline-block;
+}
+.buttons .button{
+    float: left;
+    margin-right: 10px;
+}
 /*.jspVerticalBar {float: right;}*/
 /*.jspPane {float: left;}*/
