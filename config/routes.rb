@@ -1,5 +1,6 @@
 Vcard::Application.routes.draw do
 
+
   devise_for :users
 
   get "support/change_language"
@@ -12,6 +13,7 @@ Vcard::Application.routes.draw do
     match '/resume' => 'home#resume'
     match '/contact' => 'home#contact'
     match '/change_language' => 'home#change_language'
+    match '/contact/send_email' => 'contact#send_email'
   end
 
   # The priority is based upon order of creation:

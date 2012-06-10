@@ -258,22 +258,18 @@ ul.contact-list {
 }
 
 ul.contact-list li {
-    margin-bottom: 2px;
+    margin-bottom: 8px;
     padding-left: 25px;
     background-repeat: no-repeat;
     background-position: center left;
-}
-
-ul.contact-list li.contact-list-fax {
-    background-image: url('../image/contact_icon_fax.png');
 }
 
 ul.contact-list li.contact-list-mail {
     background-image: url('../image/contact_icon_mail.png');
 }
 
-ul.contact-list li.contact-list-phone {
-    background-image: url('../image/contact_icon_phone.png');
+ul.contact-list li.contact-list-skype {
+    background-image: url('../image/contact_skype.png');
 }
 
 ul.contact-list li span {

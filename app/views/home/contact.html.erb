@@ -1,5 +1,69 @@
-<% if I18n.locale.to_sym == :ru %>
-    Русская версия страницы контактов
-<% else %>
-    English vesion contacts
-<% end %>
+<div class="layout-50 clear-fix overflow-fix page-4">
+
+  <div class="layout-50-left">
+    <h3><%= t(:contact_information) %> </h3>
+
+    <ul class="no-list contact-list">
+      <li class="contact-list-mail"><span>Mail:</span> zh.kostev@gmail.com</li>
+      <li class="contact-list-skype"><span>Skype:</span> zhenya.kostev</li>
+    </ul>
+
+    <p>
+      <%= t(:if_find_bug) %>
+    </p>
+  </div>
+
+  <div class="layout-50-right">
+
+    <h3><%= t(:contact_head) %> </h3>
+    <%= form_tag "#{I18n.locale}/contact/send_email", :id => 'contact_form', :method => :get, :remote => true do %>
+        <div>
+
+          <div class="form-line block">
+            <input type="text" name="name" id="name" value="<%= t(:your_name) %>" onfocus="clearInput(this,'focus','<%= t(:your_name) %>')" onblur="clearInput(this,'blur','<%= t(:your_name) %>')">
+          </div>
+          <div class="form-line block">
+            <input type="text" name="email" id="email" value="<%= t(:your_email) %>" onfocus="clearInput(this,'focus','<%= t(:your_email) %>')" onblur="clearInput(this,'blur','<%= t(:your_email) %>')">
+          </div>
+          <div class="form-line block">
+            <textarea rows="0" cols="0" name="message" id="message" onfocus="clearInput(this,'focus','<%= t(:message) %>')" onblur="clearInput(this,'blur','<%= t(:message) %>')"><%= t(:message) %></textarea>
+          </div>
+
+          <div class="form-line">
+            <a href="javascript:void(0);" class="button block" id="contact-send" onclick="$('#contact_form').submit();">Send</a>
+          </div>
+    <% end %>
+
+
+    </div>
+
+  </div>
+</div>
+
+<div id="contact_dialog" style="display: none;"></div>
+<script type="text/javascript">
+    $(function () {
+        $('#contact_dialog').dialog({ modal:true, resizable:false, autoOpen:false,
+            title: 'contact dialog', width:330,
+            buttons:[
+            {
+                text:'Ok',
+                click:function () {
+                    $(this).dialog('close')
+                }
+            }
+        ]})
+    });
+
+    function clearInput(object, action, defaulValue) {
+        var object = $(object);
+        var value = jQuery.trim(object.val());
+
+        if (action == 'focus') {
+            if (value == defaulValue) object.val('');
+        }
+        else if (action == 'blur') {
+            if (value == '') object.val(defaulValue);
+        }
+    }
+</script>

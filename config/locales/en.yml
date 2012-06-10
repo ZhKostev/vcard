@@ -14,4 +14,15 @@ en:
   blog: Blog
   blog_desc: Blog about RoR
   minsk: Minsk
+  contact_head: Get In Touch
+  contact_information: Contact Information
+  your_name: Your Name
+  your_email: Your E-mail Address
+  message: Message*
+  if_find_bug: "Please, contact me if you found bug on this site or you have suggestions for improvement."
+  contact_success: Message was successully send.
+  contact_message_err: Message can't be blank! Please check fields and resubmit message form.
+  contact_email_err: Email is not valid! Please check fields and resubmit message form.
+
+
 

@@ -1,0 +1,76 @@
+<div class="datagrid" style="font: normal 12px/150% Geneva, Arial, Helvetica, sans-serif;
+        background: #fff;
+        overflow: hidden;
+        border: 3px solid #991821;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        border-radius: 7px;
+        margin-top: 35px;">
+  <table style=" border-collapse: collapse;
+          text-align: left;
+          width: 100%;
+          ">
+    <thead>
+    <tr>
+      <th colspan="2" style=" padding: 4px 5px;
+              font-size: 15px;
+              font-weight: bold;
+              border-left: 1px solid #B01C26;
+              background-color: #991821;
+              color: white;">
+        Contact Email
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if @name %>
+        <tr>
+          <td style="padding: 4px 5px;color: #80141C;
+                  border-left: 1px solid #F7CDCD;
+                  font-size: 12px;
+                  font-weight: normal;">Sender:
+          </td>
+          <td style="padding: 4px 5px;color: #80141C;
+                  border-left: 1px solid #F7CDCD;
+                  font-size: 12px;
+                  font-weight: normal;"><%= @name %></td>
+        </tr>
+    <% end %>
+    <tr>
+      <td style="padding: 4px 5px;color: #80141C;
+              border-left: 1px solid #F7CDCD;
+              font-size: 12px;
+              font-weight: normal;">Content:
+      </td>
+      <td style="padding: 4px 5px;color: #80141C;
+              border-left: 1px solid #F7CDCD;
+              font-size: 12px;
+              font-weight: normal;"><%= @content %></td>
+    </tr>
+    <tr>
+      <td style="padding: 4px 5px;color: #80141C;
+              border-left: 1px solid #F7CDCD;
+              font-size: 12px;
+              font-weight: normal;">Current locale:
+      </td>
+      <td style="padding: 4px 5px;color: #80141C;
+              border-left: 1px solid #F7CDCD;
+              font-size: 12px;
+              font-weight: normal;"><%= I18n.locale %></td>
+    </tr>
+    <% if @email %>
+        <tr>
+          <td style="padding: 4px 5px;color: #80141C;
+                  border-left: 1px solid #F7CDCD;
+                  font-size: 12px;
+                  font-weight: normal;">I want to receive answer:
+          </td>
+          <td style="padding: 4px 5px;color: #80141C;
+                  border-left: 1px solid #F7CDCD;
+                  font-size: 12px;
+                  font-weight: normal;"><%= mail_to @email %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
