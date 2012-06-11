@@ -1,5 +1,8 @@
 Vcard::Application.routes.draw do
 
+  scope :module => "admin" do
+    match '/my_site' => 'admin_main#main'
+  end
 
   devise_for :users
 
