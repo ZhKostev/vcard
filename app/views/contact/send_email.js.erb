@@ -3,11 +3,11 @@
     $('#email').val('<%= t(:your_email) %>');
     $('#message').val('<%= t(:message) %>');
 <% end %>
-$('#contact_dialog').html('<%= escape_javascript(
+$('#system_dialog').html('<%= escape_javascript(
  if @success
     t(:contact_success)
  else
     @errors.map{|e| t(e.to_sym)}.join('<br/><br/>').html_safe
  end
  )%>');
-$('#contact_dialog').dialog('open');
+$('#system_dialog').dialog('open');

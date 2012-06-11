@@ -67,7 +67,7 @@
       <li id="tab-3" class="orange-mail">
         <a href="#!/contact">
           <span class="title"><%= t :contact %></span>
-          <span class="subtitle"><%= t :contact_desc %><%=  %></span>
+          <span class="subtitle"><%= t :contact_desc %><%= %></span>
         </a>
       </li>
       <li id="tab-4" class="red-briefcase">
@@ -117,24 +117,34 @@
   <hr class="footer-line"/>
 
   <div class="main box-center layout-7030 clear-fix overflow-fix" style="text-align: center">
-      <%= t :minsk %>, 2012
+    <%= t :minsk %>, 2012
   </div>
 
 </div>
 <!-- /Footer -->
+<div id="system_dialog" style="display: none;"></div>
 
 <script type="text/javascript">
-    $(document).ready(function()
-    {
-        var page=
+    $(document).ready(function () {
+        var page =
         {
-            'about'         :   {tab:'tab-1',html:'/<%= I18n.locale %>/about',main:1,openStart:0},
-            'resume'        :   {tab:'tab-2',html:'/<%= I18n.locale %>/resume',main:1,openStart:0},
-            'contact'       :   {tab:'tab-3',html:'/<%= I18n.locale %>/contact',main:1,openStart:0},
-            'blog'          :   {tab:'tab-4',html:'/<%= I18n.locale %>/blog', main:1,openStart:0}
+            'about':{tab:'tab-1', html:'/<%= I18n.locale %>/about', main:1, openStart:0},
+            'resume':{tab:'tab-2', html:'/<%= I18n.locale %>/resume', main:1, openStart:0},
+            'contact':{tab:'tab-3', html:'/<%= I18n.locale %>/contact', main:1, openStart:0},
+            'blog':{tab:'tab-4', html:'/<%= I18n.locale %>/blog', main:1, openStart:0}
         };
 
         $('.cascade').cascade(page);
+        $('#system_dialog').dialog({ modal:true, resizable:false, autoOpen:false,
+            title:'<%= t(:system_dialog) %>', width:330,
+            buttons:[
+                {
+                    text:'Ok',
+                    click:function () {
+                        $(this).dialog('close')
+                    }
+                }
+            ]})
     });
 
 </script>
