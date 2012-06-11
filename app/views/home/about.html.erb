@@ -1,1 +1,30 @@
-<h1><%= t :hello %></h1>
+<div class="layout-50 overflow-fix clear-fix page-1">
+
+  <h3><%= t(:about) %></h3>
+
+  <div class="layout-50-left">
+
+    <p class="top-0">
+      <%= render "/home/partials/about_#{I18n.locale}" %>
+    </p>
+
+  </div>
+
+  <div class="layout-50-right">
+
+    <div id="slider" class="nivoSlider" >
+
+      <img src="image/slider/slider_img1.jpg" alt="" style="display: none; ">
+      <img src="image/slider/slider_img2.jpg" alt="" style="display: none; ">
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#slider').nivoSlider();
+        $('#slider').css('position', 'absolute')
+    });
+</script>

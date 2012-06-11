@@ -23,6 +23,7 @@ en:
   contact_success: Message was successully send.
   contact_message_err: Message can't be blank! Please check fields and resubmit message form.
   contact_email_err: Email is not valid! Please check fields and resubmit message form.
+  about: About
 
 
 
