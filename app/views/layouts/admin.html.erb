@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title><%= t :zhenya_kostev %></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <%= stylesheet_link_tag "admin/admin_main", 'admin/style', 'admin/invalid' %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
+
+  <div id="sidebar">
+    <div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
+
+      <h1 id="sidebar-title">
+        Site Administration Part
+      </h1>
+
+      <!-- Sidebar Profile links -->
+      <div id="profile-links">
+        <a href="/" title="View the Site">View the Site</a>
+        | <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+      </div>
+
+      <ul id="main-nav">  <!-- Accordion Menu -->
+
+        <li>
+          <a href="<%= my_site_path %>" class="nav-top-item no-submenu" style="padding-right: 15px; "> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+            Dashboard
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="nav-top-item" style="padding-right: 15px; "> <!-- Add the class "current" to current menu item -->
+            Articles
+          </a>
+          <ul style="display: block; ">
+            <li><a href="#">Write a new Article</a></li>
+            <li><a class="" href="#">Manage Articles</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="nav-top-item" style="padding-right: 15px; "> <!-- Add the class "current" to current menu item -->
+            Rubrics
+          </a>
+          <ul style="display: block; ">
+            <li><a href="#">Write a new Article</a></li>
+            <li><a class="" href="#">Manage Articles</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="nav-top-item" style="padding-right: 15px; "> <!-- Add the class "current" to current menu item -->
+            Subscribers
+          </a>
+          <ul style="display: block; ">
+          </ul>
+        </li>
+
+      </ul>
+      <!-- End #main-nav -->
+
+
+    </div>
+  </div>
+  <!-- End #sidebar -->
+  <div id="main-content" style="width: 100%;"> <!-- Main Content Section with everything -->
+
+    <%= yield %>
+
+  </div>
+  <!-- End #main-content -->
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+//Sidebar Accordion Menu:
+
+        $("#main-nav li ul").hide(); // Hide all sub menus
+        $("#main-nav li a.current").parent().find("ul").slideToggle("slow"); // Slide down the current menu item's sub menu
+
+        $("#main-nav li a.nav-top-item").click(// When a top menu item is clicked...
+                function () {
+                    $(this).parent().siblings().find("ul").slideUp("normal"); // Slide up all sub menus except the one clicked
+                    $(this).next().slideToggle("normal"); // Slide down the clicked sub menu
+                    return false;
+                }
+        );
+
+        $("#main-nav li a.no-submenu").click(// When a menu item with no sub menu is clicked...
+                function () {
+                    window.location.href = (this.href); // Just open the link instead of a sub menu
+                    return false;
+                }
+        );
+
+        // Sidebar Accordion Menu Hover Effect:
+
+        $("#main-nav li .nav-top-item").hover(
+                function () {
+                    $(this).stop().animate({ paddingRight:"25px" }, 200);
+                },
+                function () {
+                    $(this).stop().animate({ paddingRight:"15px" });
+                }
+        );
+
+
+    })
+</script>
+</body>
+
+</html>
+
+

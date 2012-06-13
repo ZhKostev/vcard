@@ -23,4 +23,9 @@ ru:
   contact_email_err: Email неверного формата! Пожалуйста, проверьте правильность заполнения полей и отправьте сообщение снова.
   about: О себе
   system_dialog: Сообщение от сайта
+  devise:
+    failure:
+      user:
+        invalid: Username or password incorrect
+        unauthenticated: You must log in to access this page
 
