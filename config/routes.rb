@@ -2,6 +2,7 @@ Vcard::Application.routes.draw do
 
   scope :module => "admin" do
     match '/my_site' => 'admin_main#main'
+    resources :rubrics
   end
 
   devise_for :users

@@ -29,13 +29,13 @@
       <ul id="main-nav">  <!-- Accordion Menu -->
 
         <li>
-          <a href="<%= my_site_path %>" class="nav-top-item no-submenu" style="padding-right: 15px; "> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+          <a href="<%= my_site_path %>" class="nav-top-item no-submenu <%= 'current' if controller_name == 'admin_main' %>">
             Dashboard
           </a>
         </li>
 
         <li>
-          <a href="#" class="nav-top-item" style="padding-right: 15px; "> <!-- Add the class "current" to current menu item -->
+          <a href="#" class="nav-top-item">
             Articles
           </a>
           <ul style="display: block; ">
@@ -45,17 +45,25 @@
         </li>
 
         <li>
-          <a href="#" class="nav-top-item" style="padding-right: 15px; "> <!-- Add the class "current" to current menu item -->
+          <a href="#" class="nav-top-item <%= 'current' if controller_name == 'rubrics' %>">
             Rubrics
           </a>
           <ul style="display: block; ">
-            <li><a href="#">Write a new Article</a></li>
-            <li><a class="" href="#">Manage Articles</a></li>
+            <li>
+              <a href="<%= new_rubric_path %>" class="<%= 'current' if controller_name == 'rubrics' && action_name == 'new' %>">
+                Write a new Rubric
+              </a>
+            </li>
+            <li>
+              <a href="<%= rubrics_path %>" class="<%= 'current' if controller_name == 'rubrics' && action_name == 'index' %>">
+                Manage Rubric
+              </a>
+            </li>
           </ul>
         </li>
 
         <li>
-          <a href="#" class="nav-top-item" style="padding-right: 15px; "> <!-- Add the class "current" to current menu item -->
+          <a href="#" class="nav-top-item">
             Subscribers
           </a>
           <ul style="display: block; ">
