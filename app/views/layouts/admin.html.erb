@@ -55,7 +55,7 @@
               </a>
             </li>
             <li>
-              <a href="<%= rubrics_path %>" class="<%= 'current' if controller_name == 'rubrics' && action_name == 'index' %>">
+              <a href="<%= rubrics_path %>" class="<%= 'current' if controller_name == 'rubrics' && action_name != 'new' %>">
                 Manage Rubric
               </a>
             </li>
@@ -77,7 +77,7 @@
     </div>
   </div>
   <!-- End #sidebar -->
-  <div id="main-content" style="width: 100%;"> <!-- Main Content Section with everything -->
+  <div id="main-content"> <!-- Main Content Section with everything -->
 
     <%= yield %>
 

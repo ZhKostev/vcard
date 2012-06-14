@@ -1,0 +1,7 @@
+<%= form_for @rubric do |f| %>
+
+    <%= form_field(f, :text_field, :title_en) %>
+    <%= form_field(f, :text_field, :title_ru) %>
+
+    <%= f.submit "Save", :class => 'button' %>
+<% end %>

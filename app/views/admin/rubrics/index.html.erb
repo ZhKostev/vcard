@@ -1,0 +1,46 @@
+<h2>Rubrics Index</h2>
+<a class="shortcut-button" href="<%= new_rubric_path %>">
+  <span>
+    <%= image_tag 'images/pencil_big.png' %> <br/>
+	Add an Rubric
+  </span>
+</a>
+<div style="width: 50%">
+  <%= render :partial => 'admin/shared/notifications' %>
+</div>
+
+<div class="content-box" style="width: 50%">
+  <table>
+    <thead>
+    <tr>
+      <th>Title ru</th>
+      <th>Title en</th>
+      <th width="60px;">Actions</th>
+    </tr>
+    </thead>
+
+    <tfoot>
+    <tr>
+      <td colspan="3">
+        <%= paginate @rubrics %><br/>
+        <div class="clear"></div>
+      </td>
+    </tr>
+    </tfoot>
+
+    <tbody>
+    <% if @rubrics.any? %>
+        <%= render :partial => 'rubric', :collection => @rubrics %>
+    <% else %>
+        <tr>
+          <td colspan="3">
+            There is no rubrics yet. Please click "Add an Rubric" to add new one.
+          </td>
+        </tr>
+    <% end %>
+
+    </tbody>
+
+  </table>
+</div>
+

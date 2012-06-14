@@ -1,0 +1,12 @@
+<% if defined?(object) && object.errors.any? %>
+    <div class="notification error png_bg">
+      <%= link_to_function image_tag('images/icons/cross_grey_small.png'), "hide_notice('error')", :class => "close" %>
+      <div>
+        <ul>
+          <% object.errors.each do |attr, err| %>
+              <li><%= attr %> <%= err %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+<% end %>

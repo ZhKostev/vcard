@@ -260,8 +260,8 @@ a.remove-link:hover {
 /************ Layout ************/
 
 #main-content {
-    margin: 0 30px 0 260px;
-    padding: 40px 0 0 0;
+    margin: 0 30px 0 0;
+    padding: 40px 0 0 260px;
 }
 
 .column-left {
@@ -314,6 +314,7 @@ a.remove-link:hover {
 /*************** Content Box ***************/
 
 .content-box {
+    width: 100%;
     border: 1px solid #ccc;
     margin: 0 0 20px 0;
     background: #fff;
@@ -417,22 +418,21 @@ ul.content-box-tabs li a.current {
     font-size: 10px;
 }
 
-.pagination a {
+.pagination span {
     margin: 0 5px 0 0;
     padding: 3px 6px;
-}
-
-.pagination a.number {
     border: 1px solid #ddd;
 }
 
-.pagination a.current {
+
+.pagination span.current {
+    display: inline-block;
     background: #469400 url('../images/bg-button-green.gif') top left repeat-x !important;
     border-color: #459300 !important;
     color: #fff !important;
 }
 
-.pagination a.current:hover {
+.pagination span.current:hover {
     text-decoration: underline;
 }
 
@@ -959,4 +959,18 @@ div.wysiwyg iframe {
     margin: 5px 0 0 0;
     clear: left;
     width: 97.5% !important;
+}
+
+.edit_link {
+    display: inline-block;
+    background-image: url('/assets/images/icons/pencil.png');
+    height: 16px;
+    width: 16px;
+}
+
+.destroy_link {
+    display: inline-block;
+    background-image: url('/assets/images/icons/cross.png');
+    height: 16px;
+    width: 16px;
 }
