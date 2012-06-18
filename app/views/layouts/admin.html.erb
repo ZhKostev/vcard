@@ -35,12 +35,12 @@
         </li>
 
         <li>
-          <a href="#" class="nav-top-item">
+          <a href="#" class="nav-top-item <%= 'current' if controller_name == 'articles' %>">
             Articles
           </a>
           <ul style="display: block; ">
-            <li><a href="#">Write a new Article</a></li>
-            <li><a class="" href="#">Manage Articles</a></li>
+            <li><a href="<%= new_article_path %>" class="<%= 'current' if controller_name == 'articles' && action_name == 'new' %>">Write a new Article</a></li>
+            <li><a href="<%= articles_path %>" class="<%= 'current' if controller_name == 'articles' && action_name != 'new' %>">Manage Articles</a></li>
           </ul>
         </li>
 

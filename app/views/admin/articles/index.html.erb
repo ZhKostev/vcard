@@ -1,0 +1,51 @@
+<h2>Rubrics Index</h2>
+<a class="shortcut-button" href="<%= new_article_path %>">
+  <span>
+    <%= image_tag 'images/pencil_big.png' %> <br/>
+	Add an Article
+  </span>
+</a>
+<div style="width: 100%">
+  <%= render :partial => 'admin/shared/notifications' %>
+</div>
+
+<div class="content-box" style="width: 100%">
+  <table>
+    <thead>
+    <tr>
+      <th>Title ru</th>
+      <th>Title en</th>
+      <th>Description ru</th>
+      <th>Description en</th>
+      <th>Status</th>
+      <th width="60px;">Actions</th>
+    </tr>
+    </thead>
+
+    <% if @articles.any? %>
+        <tbody>
+        <%= render :partial => 'article', :collection => @articles %>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="6">
+            <%= paginate @articles %>
+            <br/>
+            <div class="clear"></div>
+          </td>
+        </tr>
+        </tfoot>
+    <% else %>
+        <tbody>
+        <tr>
+          <td colspan="6">
+            There is no articles yet. Please click "Add an Article" to add new one.
+          </td>
+        </tr>
+        </tbody>
+    <% end %>
+
+
+  </table>
+</div>
+
