@@ -1,0 +1,52 @@
+<%= form_for @article, :html => {:class => 'admin_form'} do |f| %>
+    <div class="form_column one_of_three">
+      <%= form_field(f, :text_field, :title_ru) %>
+      <%= form_field(f, :text_field, :meta_title_ru) %>
+      <%= form_field(f, :text_field, :meta_description_ru) %>
+      <%= form_field(f, :text_field, :meta_keywords_ru) %>
+    </div>
+
+    <div class="form_column one_of_three">
+      <%= form_field(f, :text_field, :title_en) %>
+      <%= form_field(f, :text_field, :meta_title_en) %>
+      <%= form_field(f, :text_field, :meta_description_en) %>
+      <%= form_field(f, :text_field, :meta_keywords_en) %>
+    </div>
+
+    <div class="form_column one_of_three">
+      <div class="center">
+          <%= f.submit "Save as Draft", :class => 'button' %>
+          <%= f.submit "Publish", :class => 'button' %>
+      </div>
+      <div class="rubrics">
+        <% @rubrics.each do |rubric| %>
+            <div class="row">
+              <%= check_box_tag "article[rubrics][]", rubric.id, params[:article] && params[:article]['rubrics'] && params[:article]['rubrics'].include?(rubric.id) %>
+                <%= label_tag "#{rubric.title_en}/#{rubric.title_ru}" %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <%= form_field(f, :text_area, :body_ru, :style => 'height:300px; ') %>
+
+    <%= form_field(f, :text_area, :body_en, :style => 'height:300px;') %>
+
+    <div class="clear"></div>
+
+    <div class="form_column one_of_two">
+      <%= form_field(f, :text_area, :short_description_ru, :style => 'height:80px;') %>
+    </div>
+
+    <div class="form_column one_of_two">
+      <%= form_field(f, :text_area, :short_description_en, :style => 'height:80px;') %>
+    </div>
+
+
+    <!--Article(id: integer, front_version_id: integer, meta_title_ru: string, : string, : string,-->
+    <!--title_ru: string, short_description_ru: text, body_ru: text, meta_title_en: string, meta_description_en: string,-->
+    <!--meta_keywords_en: string, title_en: string, short_description_en: text, body_en: text, created_at: datetime, updated_at: datetime)-->
+
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614182939) do
+ActiveRecord::Schema.define(:version => 20120619192942) do
 
   create_table "articles", :force => true do |t|
     t.integer  "front_version_id"
@@ -29,9 +29,18 @@ ActiveRecord::Schema.define(:version => 20120614182939) do
     t.text     "body_en"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "articles", ["front_version_id"], :name => "articles_front_version_id_index"
+  add_index "articles", ["slug"], :name => "index_articles_on_slug"
+
+  create_table "articles_rubrics", :id => false, :force => true do |t|
+    t.integer "article_id", :null => false
+    t.integer "rubric_id",  :null => false
+  end
+
+  add_index "articles_rubrics", ["article_id", "rubric_id"], :name => "index_articles_rubrics_on_article_id_and_rubric_id", :unique => true
 
   create_table "rubrics", :force => true do |t|
     t.string   "title_en"

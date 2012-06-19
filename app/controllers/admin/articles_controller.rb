@@ -1,5 +1,6 @@
 class Admin::ArticlesController < Admin::ApplicationController
-  
+  before_filter :find_rubrics, :only => [:new, :edit, :create, :update]
+
   def index
     @articles = Article.where('1=1').page(params[:page])
   end
@@ -9,7 +10,8 @@ class Admin::ArticlesController < Admin::ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
+    @article = Article.new()
+    @article.attributes = params[:article]
     if @article.save
       redirect_to articles_path, :success => "New Article was successfully added."
     else
@@ -34,5 +36,10 @@ class Admin::ArticlesController < Admin::ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
     redirect_to articles_path, :notice => "Article was successfully deleted."
+  end
+
+  private
+  def find_rubrics
+    @rubrics = Rubric.all
   end
 end

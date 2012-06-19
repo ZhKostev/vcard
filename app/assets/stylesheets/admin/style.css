@@ -377,6 +377,7 @@ ul.content-box-tabs li a.current {
 }
 
 #main-content table thead th {
+    text-align: left;
     font-weight: bold;
     font-size: 15px;
     border-bottom: 1px solid #ddd;
@@ -973,4 +974,16 @@ div.wysiwyg iframe {
     background-image: url('/assets/images/icons/cross.png');
     height: 16px;
     width: 16px;
+}
+
+textarea {
+    resize: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.inline_block{
+    display: inline-block;
 }

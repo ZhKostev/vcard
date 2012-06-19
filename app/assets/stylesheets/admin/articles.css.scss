@@ -1,3 +1,14 @@
-// Place all the styles related to the admin/articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.rubrics {
+  max-height:280px;
+  overflow:auto;
+  .row {
+    margin-top: 5px;
+    label {
+      vertical-align: top;
+      display: inline-block;
+    }
+    input[type='checkbox'] {
+      margin: 0;
+    }
+  }
+}
