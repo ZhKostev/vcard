@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705201036) do
+ActiveRecord::Schema.define(:version => 20120705231721) do
 
   create_table "articles", :force => true do |t|
-    t.integer  "front_version_id"
+    t.integer  "original_id"
     t.string   "meta_title_ru"
     t.string   "meta_description_ru"
     t.string   "meta_keywords_ru"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20120705201036) do
     t.string   "slug"
   end
 
-  add_index "articles", ["front_version_id"], :name => "articles_front_version_id_index"
+  add_index "articles", ["original_id"], :name => "articles_front_version_id_index"
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
 
   create_table "articles_rubrics", :id => false, :force => true do |t|
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(:version => 20120705201036) do
   end
 
   add_index "articles_rubrics", ["article_id", "rubric_id"], :name => "index_articles_rubrics_on_article_id_and_rubric_id", :unique => true
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
   create_table "rubrics", :force => true do |t|
     t.string   "title_en"

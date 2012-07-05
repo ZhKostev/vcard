@@ -1,5 +1,7 @@
 Vcard::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   scope :module => "admin" do
     match '/my_site' => 'admin_main#main'
     resources :rubrics

@@ -19,26 +19,45 @@ class Article < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   extend FriendlyId
 
-  has_one :front_version, :class_name => "Article", :foreign_key => :front_version_id
+  belongs_to :original, :class_name => "Article", :foreign_key => :original_id
   has_and_belongs_to_many :rubrics, :uniq => true
   friendly_id :title_en, use: :slugged
+
+  scope :originals, where(:original_id => nil)
+  scope :front_versions, where("original_id IS NOT NULL")
 
 
   validates :title_ru, :title_en, :presence => true
 
   def assign_attributes(attributes, options = {})
     if (rubrics = attributes.delete(:rubrics))
+      self.rubrics.destroy_all
       rubrics.each do |r_id|
-        self.rubrics << Rubric.find(r_id)
+        self.rubrics << Rubric.find_by_id(r_id)
       end
     end
     super(attributes, options = {})
   end
 
+  #create version for front
+  def publish!
+    if (clone = self.front_version)
+      clone.update_attributes!(self.attributes)
+    else
+      clone = Article.create!(self.attributes)
+    end
+    clone.update_column(:original_id, self.id)
+    clone.rubrics.destroy_all
+    clone.rubrics << self.rubrics
+  end
+
+
+  def front_version
+    Article.find_by_original_id(self.id)
+  end
 
   #return current article's status
   def status
-    #TODO add functional to define draft or not after update published version
     self.front_version ? 'Published' : 'Draft'
   end
 

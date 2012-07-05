@@ -1,8 +1,9 @@
 class Admin::ArticlesController < Admin::ApplicationController
   before_filter :find_rubrics, :only => [:new, :edit, :create, :update]
+  after_filter :publish_article, :only => [:create, :update]
 
   def index
-    @articles = Article.where('1=1').page(params[:page])
+    @articles = Article.originals.page(params[:page])
   end
 
   def new
@@ -40,5 +41,10 @@ class Admin::ArticlesController < Admin::ApplicationController
   private
   def find_rubrics
     @rubrics = Rubric.all
+  end
+
+  #publish article if it valid and admin submit as "Publish"
+  def publish_article
+    @article.publish! if params[:commit] == 'Publish' && @article.valid?
   end
 end

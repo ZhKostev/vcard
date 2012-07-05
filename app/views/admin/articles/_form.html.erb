@@ -14,7 +14,7 @@
     </div>
 
     <div class="form_column one_of_three">
-      <div class="center">
+      <div class="center" style="margin-bottom: 10px;">
         <%= f.submit "Save as Draft", :class => 'button' %>
         <%= f.submit "Publish", :class => 'button' %>
       </div>
@@ -30,9 +30,9 @@
 
     <div class="clear"></div>
 
-    <%= form_field(f, :text_area, :body_ru, :style => 'height:300px; ') %>
+    <%= form_field(f, :cktext_area, :body_ru, :style => 'height:300px; ') %>
 
-    <%= form_field(f, :text_area, :body_en, :style => 'height:300px;') %>
+    <%= form_field(f, :cktext_area, :body_en, :style => 'height:300px;') %>
 
     <div class="clear"></div>
 

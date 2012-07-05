@@ -11,6 +11,10 @@ gem 'kaminari'
 gem 'execjs'
 gem 'therubyracer'
 gem "friendly_id", "~> 4.0.1"
+gem "ckeditor", "~> 3.7.1"
+gem "carrierwave"
+gem "mini_magick"
+
 
 # Gems used only for assets and not required
 # in production environments by default.
