@@ -15,14 +15,14 @@
 
     <div class="form_column one_of_three">
       <div class="center">
-          <%= f.submit "Save as Draft", :class => 'button' %>
-          <%= f.submit "Publish", :class => 'button' %>
+        <%= f.submit "Save as Draft", :class => 'button' %>
+        <%= f.submit "Publish", :class => 'button' %>
       </div>
       <div class="rubrics">
         <% @rubrics.each do |rubric| %>
             <div class="row">
-              <%= check_box_tag "article[rubrics][]", rubric.id, params[:article] && params[:article]['rubrics'] && params[:article]['rubrics'].include?(rubric.id) %>
-                <%= label_tag "#{rubric.title_en}/#{rubric.title_ru}" %>
+              <%= check_box_tag "article[rubrics][]", rubric.id, f.object.rubrics.include?(rubric) %>
+              <%= label_tag "#{rubric.title_en}/#{rubric.title_ru}" %>
             </div>
         <% end %>
       </div>

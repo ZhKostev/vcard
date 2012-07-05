@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120619192942) do
+ActiveRecord::Schema.define(:version => 20120705201036) do
 
   create_table "articles", :force => true do |t|
     t.integer  "front_version_id"
@@ -47,7 +47,10 @@ ActiveRecord::Schema.define(:version => 20120619192942) do
     t.string   "title_ru"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "rubrics", ["slug"], :name => "index_rubrics_on_slug"
 
   create_table "users", :force => true do |t|
     t.string   "email",               :default => "", :null => false

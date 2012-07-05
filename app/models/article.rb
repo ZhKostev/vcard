@@ -27,7 +27,12 @@ class Article < ActiveRecord::Base
   validates :title_ru, :title_en, :presence => true
 
   def assign_attributes(attributes, options = {})
- #TODO handle rubrics params
+    if (rubrics = attributes.delete(:rubrics))
+      rubrics.each do |r_id|
+        self.rubrics << Rubric.find(r_id)
+      end
+    end
+    super(attributes, options = {})
   end
 
 

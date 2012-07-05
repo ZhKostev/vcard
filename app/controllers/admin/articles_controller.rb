@@ -10,8 +10,7 @@ class Admin::ArticlesController < Admin::ApplicationController
   end
 
   def create
-    @article = Article.new()
-    @article.attributes = params[:article]
+    @article = Article.new(params[:article])
     if @article.save
       redirect_to articles_path, :success => "New Article was successfully added."
     else
