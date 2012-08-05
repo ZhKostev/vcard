@@ -29,3 +29,7 @@ ru:
         invalid: Username or password incorrect
         unauthenticated: You must log in to access this page
 
+  contents: Оглавление
+  no_articles_yet: К сожалению нет ни одной записи.
+  rubric_name: Рубрика
+  articles_count: Кол-во записей

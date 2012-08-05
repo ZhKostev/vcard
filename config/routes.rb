@@ -19,6 +19,7 @@ Vcard::Application.routes.draw do
     match '/about' => 'home#about'
     match '/resume' => 'home#resume'
     match '/contact' => 'home#contact'
+    match '/blog' => 'home#blog'
     match '/change_language' => 'home#change_language'
     match '/contact/send_email' => 'contact#send_email'
   end

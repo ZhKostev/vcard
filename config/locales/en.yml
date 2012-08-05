@@ -25,5 +25,9 @@ en:
   contact_email_err: Email is not valid! Please check fields and resubmit message form.
   about: About
   system_dialog: System info
+  contents: Table of Contents
+  no_articles_yet: Sorry, but there are no articles now.
+  rubric_name: Rubric name
+  articles_count: Articles count
 
 

@@ -16,6 +16,14 @@ class HomeController < ApplicationController
     redirect_to "#{root_url}#{I18n.locale}#!/contact" unless request.xhr?
   end
 
+  def blog
+    if request.xhr?
+      @rubrics = Rubric.with_published_articles
+    else
+      redirect_to "#{root_url}#{I18n.locale}#!/blog"
+    end
+  end
+
   def change_language
     if params[:change_language]
       I18n.locale = params[:change_language]

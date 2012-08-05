@@ -1,0 +1,21 @@
+<div class="layout-50 clear-fix overflow-fix page-4">
+  <h3 class="center_align"><%= t(:contents) %></h3>
+  <hr class="standard_hr"/>
+
+  <% if @rubrics.present? && @rubrics.any? %>
+      <div class="left bold white_text"><%= t(:rubric_name) %></div>
+      <div class="right bold white_text"><%= t(:articles_count) %> </div>
+      <div class="clear"></div>
+      <hr class="standard_hr"/>
+      <% @rubrics.each do |rubric| %>
+          <div class="rubric ">
+            <span class="left"><%= link_to rubric.title_en, '#' %></span>
+            <span class="right"><%= link_to 1, '#' %></span>
+          </div>
+      <% end %>
+  <% else %>
+      <div class="empty_listing">
+        <%= t(:no_articles_yet) %>
+      </div>
+  <% end %>
+</div>

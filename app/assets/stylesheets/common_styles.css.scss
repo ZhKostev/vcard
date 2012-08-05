@@ -1,0 +1,53 @@
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.center_align {
+  text-align: center;
+}
+
+.empty_listing {
+  margin: auto;
+  width: 215px;
+  margin-top: 50px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.white_text {
+  color: white;
+}
+
+.rubric {
+  color: white;
+  background-image: url('http://localhost:3000/assets/images/dots.jpg');
+  background-repeat: repeat-x;
+  background-position-y: -5px;
+  height: 20px;
+  span{
+    background-image: url('../image/background/wood.png');
+    background-repeat: repeat;
+    height: 20px;
+    a{
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bolder;
+    }
+  }
+  span.left{
+    padding-right: 5px;
+  }
+  span.right{
+    padding-left: 5px;
+  }
+}
