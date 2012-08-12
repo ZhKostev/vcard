@@ -20,6 +20,9 @@ Vcard::Application.routes.draw do
     match '/resume' => 'home#resume'
     match '/contact' => 'home#contact'
     match '/blog' => 'home#blog'
+    match '/blog/:id' => 'blog#show_rubric', :as => :show_rubric
+    match '/blog/article/:id' => 'blog#show_article', :as => :show_article
+    match '/blog/subscribe' => 'blog#subscribe', :as => :subscribe
     match '/change_language' => 'home#change_language'
     match '/contact/send_email' => 'contact#send_email'
   end

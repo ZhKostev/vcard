@@ -1,0 +1,34 @@
+<% if defined?(title) %>
+    <% if defined?(url) && defined?(link_text) %>
+        <%= link_to link_text, url, :class => 'left bold white_text back_link' %>
+    <% end %>
+    <% if defined?(subscribe_url) && defined?(subscribe_link_text) %>
+        <%= link_to subscribe_link_text, 'javascript:void(0);', :class => 'right bold white_text subscribe_link', :onclick => 'open_subscribe_dialog();' %>
+    <% end %>
+    <h3 class="center_align">
+      <%= @rubric.title %>
+    </h3>
+
+    <div id="subscribe_dialog" style="display: none;">
+
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#subscribe_dialog').dialog({ modal:true, resizable:false, autoOpen:false,
+                title:'<%= t(:subscribe_dialog) %>', width:330,
+                buttons:[
+                    {
+                        text: '<%= t(:cancel) %>',
+                        click:function () {
+                            $(this).dialog('close')
+                        }
+                    }
+                ]})
+        })
+
+        function open_subscribe_dialog() {
+            $('#subscribe_dialog').dialog('open');
+        }
+    </script>
+<% end %>

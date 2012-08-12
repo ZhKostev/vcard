@@ -9,7 +9,7 @@
       <hr class="standard_hr"/>
       <% @rubrics.each do |rubric| %>
           <div class="rubric ">
-            <span class="left"><%= link_to rubric.title_en, '#' %></span>
+            <span class="left"><%= link_to rubric.title, show_rubric_url(:id => rubric.to_param, :locale => I18n.locale) %></span>
             <span class="right"><%= link_to 1, '#' %></span>
           </div>
       <% end %>

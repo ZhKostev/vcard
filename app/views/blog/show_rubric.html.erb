@@ -1,0 +1,23 @@
+<%= render :partial => 'shared/blog_title', :locals => {:title => @rubric.title,
+                                                        :url => blog_url, :link_text => t('helpers.links.back_to_content'),
+                                                        :subscribe_url => blog_url, :subscribe_link_text => t('helpers.links.subscribe')
+} %>
+
+<hr class="standard_hr" style="margin-bottom: 15px;"/>
+<div class="scroll_box" style="max-height: 355px; ">
+  <div>
+    <% @rubric.articles.for_current_locale.front_versions.each do |article|%>
+        <div class="article_head">
+          <div class="left article_title">
+            <%= article.title.humanize%>
+          </div>
+          <div class="right article_date">
+            <%# image_tag('images/icons/calendar.png') %>
+            <%= l article.updated_at %>
+          </div>
+        </div>
+        <%== article.short_summary %><%= link_to t(:read_more), show_article_path(:id => article.to_param, :locale => I18n.locale), :class => 'read_more_link' %>
+        <hr class="reparation_hr">
+    <% end %>
+  </div>
+</div>

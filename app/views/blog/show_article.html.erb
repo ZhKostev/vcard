@@ -1,0 +1,14 @@
+<h3 class="center_align"><%= @article.title.humanize %></h3>
+<hr class="standard_hr"/>
+<div class="white_text">
+  <%= t(:rubrics) %>:
+  <%= @article.rubrics.map { |rubric| link_to(rubric.title.humanize, show_rubric_url(:id => rubric.to_param), :class => 'bold white_text') }.join(', ').html_safe %>
+</div>
+
+
+<hr class="standard_hr" style="margin-bottom: 15px;"/>
+<div class="scroll_box" style="max-height: 355px; ">
+  <div>
+    <%== @article.body %>
+  </div>
+</div>

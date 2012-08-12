@@ -1,10 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.6'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql2'
 gem 'devise'
 gem 'kaminari'
@@ -14,6 +10,7 @@ gem "friendly_id", "~> 4.0.1"
 gem "ckeditor", "~> 3.7.1"
 gem "carrierwave"
 gem "mini_magick"
+gem "default_value_for"
 
 
 # Gems used only for assets and not required
@@ -41,6 +38,6 @@ group :test do
 end
 
 group :development do
-  gem 'linecache19', '0.5.13'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'linecache19'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
 end

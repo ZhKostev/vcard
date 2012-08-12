@@ -1,4 +1,5 @@
-#| id                   | int(11)      | NO   | PRI | NULL    | auto_increment |
+#encoding: utf-8
+
 #| front_version_id     | int(11)      | YES  | MUL | NULL    |                |
 #| meta_title_ru        | varchar(255) | YES  |     | NULL    |                |
 #| meta_description_ru  | varchar(255) | YES  |     | NULL    |                |
@@ -17,6 +18,7 @@
 class Article < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
   include ActionView::Helpers::TextHelper
+  include Modules::ModelTranslation
   extend FriendlyId
 
   belongs_to :original, :class_name => "Article", :foreign_key => :original_id
@@ -26,8 +28,21 @@ class Article < ActiveRecord::Base
   scope :originals, where(:original_id => nil)
   scope :front_versions, where("original_id IS NOT NULL")
 
-
   validates :title_ru, :title_en, :presence => true
+
+  default_value_for :title_ru, "Для данного поста нет перевода на русский."
+  default_value_for :body_ru, "Для данного поста нет перевода на русский."
+  default_value_for :title_en, "No translation for this article."
+  default_value_for :body_en, "No translation for this article."
+
+  #return articles witch has translation for current locale
+  def self.for_current_locale
+    if I18n.locale == :en
+      where("title_en IS NOT NULL AND title_en != 'No translation for this article.'" )
+    else
+      where("title_ru IS NOT NULL AND title_ru != 'Для данного поста нет перевода на русский.'" )
+    end
+  end
 
   def assign_attributes(attributes, options = {})
     if (rubrics = attributes.delete(:rubrics))
@@ -62,10 +77,10 @@ class Article < ActiveRecord::Base
   end
 
   def short_summary_ru
-    truncate(short_description_ru || strip_tags(body_ru), :length => 150)
+    truncate(short_description_ru.present? ? short_description_ru : strip_tags(body_ru), :length => 400)
   end
 
   def short_summary_en
-    truncate(short_description_en || strip_tags(body_en), :length => 150)
+    truncate(short_description_en.present? ? short_description_en : strip_tags(body_en), :length => 400)
   end
 end

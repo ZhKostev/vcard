@@ -1,0 +1,48 @@
+// Place all the styles related to the blog controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.read_more_link {
+  color: white;
+  font-weight: bold;
+}
+
+.reparation_hr {
+  border-color: #D04519;
+  width: 45%;
+  margin: auto;
+  clear: both;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.article_head {
+  clear: both;
+  height: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  div {
+    opacity: 1;
+  }
+  div.article_date {
+    background: url('images/icons/calendar.png') no-repeat;
+    padding-left: 27px;
+  }
+}
+
+.back_link {
+  background: url('images/icons/back_arrow.png') no-repeat;
+  height: 17px;
+  padding: 7px 0 0 30px;
+  margin: 9px -122px 0 0
+}
+
+.subscribe_link {
+  background: url('images/icons/1.png') no-repeat 90px 0;
+  height: 22px;
+  padding: 7px 42px 0 0 ;
+  margin: 9px  0 0 -75px;
+  width: 80px;
+  text-align: right
+}

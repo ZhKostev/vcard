@@ -28,6 +28,19 @@ en:
   contents: Table of Contents
   no_articles_yet: Sorry, but there are no articles now.
   rubric_name: Rubric name
+  rubrics: Rubrics
   articles_count: Articles count
+  cancel: Cancel
+  helpers:
+    links:
+      read_more: Read more
+      back_to_content: Back to Table of Contents
+      subscribe: Subscribe
+  date:
+    formats:
+      default: "%m %d %Y"
+  time:
+    formats:
+      default: "%m %d %Y"
 
 

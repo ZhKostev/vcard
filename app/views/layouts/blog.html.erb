@@ -47,31 +47,12 @@
 <!-- Content -->
 <div class="content main box-center">
 
-  <!-- Cascade -->
-  <div class="cascade preloader">
+  <div class="cascade">
 
     <!-- Box menu -->
     <ul class="cascade-menu overflow-fix">
-      <li id="tab-1" class="blue-info">
-        <a href="#!/about">
-          <span class="title"><%= t :about %></span>
-          <span class="subtitle"><%= t :about_desc %></span>
-        </a>
-      </li>
-      <li id="tab-2" class="green-document">
-        <a href="#!/resume">
-          <span class="title"><%= t :resume %></span>
-          <span class="subtitle"><%= t :resume_desc %></span>
-        </a>
-      </li>
-      <li id="tab-3" class="orange-mail">
-        <a href="#!/contact">
-          <span class="title"><%= t :contact %></span>
-          <span class="subtitle"><%= t :contact_desc %><%= %></span>
-        </a>
-      </li>
-      <li id="tab-4" class="red-briefcase">
-        <a href="#!/blog">
+      <li id="tab-4" class="red-briefcase" style="left: 0px; display: block; height: 468px; opacity: 1; z-index: 2; ">
+        <a href="<%= root_url %><%= I18n.locale %>#!/main">
           <span class="title"><%= t :blog %></span>
           <span class="subtitle"><%= t :blog_desc %></span>
         </a>
@@ -80,16 +61,26 @@
     <!-- /Box menu -->
 
     <!-- Window -->
-    <div class="cascade-window">
+    <div class="cascade-window red" style="opacity: 1; display: block; width: 640px; ">
 
       <!-- Close bar -->
       <div class="cascade-window-close-bar">
-        <a href="#!/main"></a>
+        <a href="<%= root_url %><%= I18n.locale %>#!/main"></a>
       </div>
       <!-- /Close bar -->
 
       <!-- Page content -->
-      <div class="cascade-window-content"></div>
+      <div class="cascade-window-content" style="overflow: hidden; padding: 0px; width: 630px; ">
+
+
+        <div class="jspContainer" style="width: 630px; height: 415px; ">
+          <div class="jspPane" style="padding: 0px 10px 0px 0px; top: 0px; width: 620px; ">
+            <div class="layout-50 clear-fix overflow-fix page-4">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- /Page content -->
 
       <!-- Footer -->
@@ -100,7 +91,6 @@
     <!-- /Window -->
 
   </div>
-  <!-- /Cascade -->
 
 </div>
 <!-- /Content -->
@@ -120,16 +110,8 @@
 <div id="system_dialog" style="display: none;"></div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        var page =
-        {
-            'about':{tab:'tab-1', html:'/<%= I18n.locale %>/about', main:1, openStart:0},
-            'resume':{tab:'tab-2', html:'/<%= I18n.locale %>/resume', main:1, openStart:0},
-            'contact':{tab:'tab-3', html:'/<%= I18n.locale %>/contact', main:1, openStart:0},
-            'blog':{tab:'tab-4', html:'/<%= I18n.locale %>/blog', main:1, openStart:0}
-        };
-
-        $('.cascade').cascade(page);
+    $(function () {
+        $('.scroll_box').jScrollPane();
         $('#system_dialog').dialog({ modal:true, resizable:false, autoOpen:false,
             title:'<%= t(:system_dialog) %>', width:330,
             buttons:[
@@ -140,9 +122,9 @@
                     }
                 }
             ]})
-    });
-
+    })
 </script>
+
 </body>
 
 </html>

@@ -18,11 +18,11 @@ class Admin::RubricsController < Admin::ApplicationController
   end
 
   def edit
-    @rubric = Rubric.find(params[:id])
+    @rubric = Rubric.find(params[:id].to_i)
   end
 
   def update
-    @rubric = Rubric.find(params[:id])
+    @rubric = Rubric.find(params[:id].to_i)
     if @rubric.update_attributes(params[:rubric])
       redirect_to rubrics_path, :success => "New Rubric was successfully updated."
     else

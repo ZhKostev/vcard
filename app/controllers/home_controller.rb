@@ -24,10 +24,18 @@ class HomeController < ApplicationController
     end
   end
 
+  def blog_rubric
+    if request.xhr?
+    else
+      redirect_to "#{root_url}#{I18n.locale}#!/blog"
+    end
+  end
+
+
   def change_language
     if params[:change_language]
       I18n.locale = params[:change_language]
-      redirect_to  "/#{I18n.locale}/#{session[:return_path].gsub(/(\/ru|\/en)/,'')}"
+      redirect_to  "/#{I18n.locale}/#{session[:return_path].gsub(/(\/ru\/|\/en\/)/,'/')}"
     end
   end
 

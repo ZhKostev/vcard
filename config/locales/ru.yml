@@ -23,6 +23,8 @@ ru:
   contact_email_err: Email неверного формата! Пожалуйста, проверьте правильность заполнения полей и отправьте сообщение снова.
   about: О себе
   system_dialog: Сообщение от сайта
+  cancel: Отмена
+  subscribe_dialog: Подписаться на обновления
   devise:
     failure:
       user:
@@ -32,4 +34,16 @@ ru:
   contents: Оглавление
   no_articles_yet: К сожалению нет ни одной записи.
   rubric_name: Рубрика
+  rubrics: Рубрики
   articles_count: Кол-во записей
+  helpers:
+    links:
+      read_more: Читать далее
+      back_to_content: К Оглавлению
+      subscribe: Подписаться
+  date:
+    formats:
+      default: "%d %m %Y"
+  time:
+    formats:
+      default: "%d %m %Y"
