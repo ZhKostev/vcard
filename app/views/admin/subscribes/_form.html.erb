@@ -1,0 +1,7 @@
+<%= form_for(@subscribe) do |f| %>
+
+    <%= form_field(f, :text_field, :email) %>
+
+    <%= f.submit "Save", :class => 'button' %>
+
+<% end %>

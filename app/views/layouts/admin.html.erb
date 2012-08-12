@@ -56,19 +56,30 @@
             </li>
             <li>
               <a href="<%= rubrics_path %>" class="<%= 'current' if controller_name == 'rubrics' && action_name != 'new' %>">
-                Manage Rubric
+                Manage Rubrics
               </a>
             </li>
           </ul>
         </li>
 
         <li>
-          <a href="#" class="nav-top-item">
+          <a href="#" class="nav-top-item <%= 'current' if controller_name == 'subscribes' %>">
             Subscribers
           </a>
           <ul style="display: block; ">
+            <li>
+              <a href="<%= new_subscribe_path %>" class="<%= 'current' if controller_name == 'subscribes' && action_name == 'new' %>">
+                Add a new Subscriber
+              </a>
+            </li>
+            <li>
+              <a href="<%= subscribes_path %>" class="<%= 'current' if controller_name == 'subscribes' && action_name != 'new' %>">
+                Manage Subscribers
+              </a>
+            </li>
           </ul>
         </li>
+
 
       </ul>
       <!-- End #main-nav -->

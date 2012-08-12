@@ -1,0 +1,56 @@
+<h2>Subscribers Index</h2>
+<a class="shortcut-button" href="<%= new_subscribe_path %>">
+  <span>
+    <%= image_tag 'images/pencil_big.png' %> <br/>
+	Add a Subscriber
+  </span>
+</a>
+<div style="width: 40%">
+  <%= render :partial => 'admin/shared/notifications' %>
+</div>
+
+<div class="content-box" style="width: 40%">
+  <table>
+    <thead>
+    <tr>
+      <th>Email</th>
+      <th width="60px;">Actions</th>
+    </tr>
+    </thead>
+
+    <tfoot>
+    <tr>
+      <td colspan="2">
+        <%= paginate @subscribes %>
+        <br/>
+
+        <div class="clear"></div>
+      </td>
+    </tr>
+    </tfoot>
+
+    <tbody>
+    <% if @subscribes.any? %>
+        <% @subscribes.each do |subscribe| %>
+            <tr>
+              <td><%= subscribe.email %></td>
+              <td>
+                <%= link_to '', edit_subscribe_path(subscribe), :class => 'edit_link' %>
+                <%= link_to '', subscribe_path(subscribe), :class => 'destroy_link', :method => :delete,
+                            :confirm => "Are sure you want to delete #{subscribe.email}?" %>
+              </td>
+            </tr>
+        <% end %>
+
+    <% else %>
+        <tr>
+          <td colspan="3">
+            There is no subscribers yet. Please click "Add a Subscriber" to add new one.
+          </td>
+        </tr>
+    <% end %>
+
+    </tbody>
+
+  </table>
+</div>

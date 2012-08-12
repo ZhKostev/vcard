@@ -6,6 +6,7 @@ Vcard::Application.routes.draw do
     match '/my_site' => 'admin_main#main'
     resources :rubrics
     resources :articles
+    resources :subscribes
   end
 
   devise_for :users
@@ -22,7 +23,7 @@ Vcard::Application.routes.draw do
     match '/blog' => 'home#blog'
     match '/blog/:id' => 'blog#show_rubric', :as => :show_rubric
     match '/blog/article/:id' => 'blog#show_article', :as => :show_article
-    match '/blog/subscribe' => 'blog#subscribe', :as => :subscribe
+    match '/blog/subscribe' => 'blog#subscribe', :as => :subscribe_to_blog
     match '/change_language' => 'home#change_language'
     match '/contact/send_email' => 'contact#send_email'
   end
