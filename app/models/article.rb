@@ -1,20 +1,22 @@
 #encoding: utf-8
 
-#| front_version_id     | int(11)      | YES  | MUL | NULL    |                |
-#| meta_title_ru        | varchar(255) | YES  |     | NULL    |                |
-#| meta_description_ru  | varchar(255) | YES  |     | NULL    |                |
-#| meta_keywords_ru     | varchar(255) | YES  |     | NULL    |                |
-#| title_ru             | varchar(255) | YES  |     | NULL    |                |
-#| short_description_ru | text         | YES  |     | NULL    |                |
-#| body_ru              | text         | YES  |     | NULL    |                |
-#| meta_title_en        | varchar(255) | YES  |     | NULL    |                |
-#| meta_description_en  | varchar(255) | YES  |     | NULL    |                |
-#| meta_keywords_en     | varchar(255) | YES  |     | NULL    |                |
-#| title_en             | varchar(255) | YES  |     | NULL    |                |
-#| short_description_en | text         | YES  |     | NULL    |                |
-#| body_en              | text         | YES  |     | NULL    |                |
-#| slug                 | varchar(255) | YES  | MUL | NULL    |                |
-#+----------------------+--------------+------+-----+---------+----------------+
+#| front_version_id        | int(11)      | YES  | MUL | NULL    |                |
+#| meta_title_ru           | varchar(255) | YES  |     | NULL    |                |
+#| meta_description_ru     | varchar(255) | YES  |     | NULL    |                |
+#| meta_keywords_ru        | varchar(255) | YES  |     | NULL    |                |
+#| title_ru                | varchar(255) | YES  |     | NULL    |                |
+#| short_description_ru    | text         | YES  |     | NULL    |                |
+#| body_ru                 | text         | YES  |     | NULL    |                |
+#| meta_title_en           | varchar(255) | YES  |     | NULL    |                |
+#| meta_description_en     | varchar(255) | YES  |     | NULL    |                |
+#| meta_keywords_en        | varchar(255) | YES  |     | NULL    |                |
+#| title_en                | varchar(255) | YES  |     | NULL    |                |
+#| short_description_en    | text         | YES  |     | NULL    |                |
+#| body_en                 | text         | YES  |     | NULL    |                |
+#| slug                    | varchar(255) | YES  | MUL | NULL    |                |
+#| has_russian_translation | tinyint(1)   | NO   |     | NULL    |                |
+#| has_english_translation | tinyint(1)   | NO   |     | NULL    |                |
+#+-------------------------+--------------+------+-----+---------+----------------+
 class Article < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
   include ActionView::Helpers::TextHelper
@@ -30,17 +32,15 @@ class Article < ActiveRecord::Base
 
   validates :title_ru, :title_en, :presence => true
 
-  default_value_for :title_ru, "Для данного поста нет перевода на русский."
-  default_value_for :body_ru, "Для данного поста нет перевода на русский."
-  default_value_for :title_en, "No translation for this article."
-  default_value_for :body_en, "No translation for this article."
+  default_value_for :has_russian_translation, true
+  default_value_for :has_english_translation, false
 
   #return articles witch has translation for current locale
   def self.for_current_locale
     if I18n.locale == :en
-      where("title_en IS NOT NULL AND title_en != 'No translation for this article.'" )
+      where(:has_english_translation => true)
     else
-      where("title_ru IS NOT NULL AND title_ru != 'Для данного поста нет перевода на русский.'" )
+      where(:has_russian_translation => true)
     end
   end
 

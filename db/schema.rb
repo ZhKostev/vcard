@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120812122517) do
+ActiveRecord::Schema.define(:version => 20120820180312) do
 
   create_table "articles", :force => true do |t|
     t.integer  "original_id"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20120812122517) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.boolean  "has_russian_translation", :null => false
+    t.boolean  "has_english_translation", :null => false
   end
 
   add_index "articles", ["original_id"], :name => "articles_front_version_id_index"

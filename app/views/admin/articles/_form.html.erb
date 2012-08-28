@@ -1,16 +1,22 @@
 <%= form_for @article, :html => {:class => 'admin_form'} do |f| %>
     <div class="form_column one_of_three">
-      <%= form_field(f, :text_field, :title_ru) %>
-      <%= form_field(f, :text_field, :meta_title_ru) %>
-      <%= form_field(f, :text_field, :meta_description_ru) %>
-      <%= form_field(f, :text_field, :meta_keywords_ru) %>
+      <%= form_field(f, :check_box, :has_russian_translation) %>
+      <div class="column_content">
+        <%= form_field(f, :text_field, :title_ru) %>
+        <%= form_field(f, :text_field, :meta_title_ru) %>
+        <%= form_field(f, :text_field, :meta_description_ru) %>
+        <%= form_field(f, :text_field, :meta_keywords_ru) %>
+      </div>
     </div>
 
     <div class="form_column one_of_three">
-      <%= form_field(f, :text_field, :title_en) %>
-      <%= form_field(f, :text_field, :meta_title_en) %>
-      <%= form_field(f, :text_field, :meta_description_en) %>
-      <%= form_field(f, :text_field, :meta_keywords_en) %>
+      <%= form_field(f, :check_box, :has_english_translation) %>
+      <div class="column_content">
+        <%= form_field(f, :text_field, :title_en) %>
+        <%= form_field(f, :text_field, :meta_title_en) %>
+        <%= form_field(f, :text_field, :meta_description_en) %>
+        <%= form_field(f, :text_field, :meta_keywords_en) %>
+      </div>
     </div>
 
     <div class="form_column one_of_three">
@@ -44,9 +50,5 @@
       <%= form_field(f, :text_area, :short_description_en, :style => 'height:80px;') %>
     </div>
 
-
-    <!--Article(id: integer, front_version_id: integer, meta_title_ru: string, : string, : string,-->
-    <!--title_ru: string, short_description_ru: text, body_ru: text, meta_title_en: string, meta_description_en: string,-->
-    <!--meta_keywords_en: string, title_en: string, short_description_en: text, body_en: text, created_at: datetime, updated_at: datetime)-->
-
 <% end %>
+
