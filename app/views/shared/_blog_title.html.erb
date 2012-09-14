@@ -6,22 +6,50 @@
         <%= link_to subscribe_link_text, 'javascript:void(0);', :class => 'right bold white_text subscribe_link', :onclick => 'open_subscribe_dialog();' %>
     <% end %>
     <h3 class="center_align">
-      <%= @rubric.title %>
+      <%= title %>
     </h3>
 
     <div id="subscribe_dialog" style="display: none;">
-
+      <%= form_tag subscribe_to_blog_url(:locale => I18n.locale), :remote => true, :id => 'subscribe_form' do |f| %>
+          <div class="form_row">
+            <label for="subscriber_email"><%= t('subscribe_form.email') %><star class='red'>*</star>:</label>
+            <%= text_field_tag "subscriber[email]" %>
+            <div class="clear"></div>
+            <div class="error_row"></div>
+          </div>
+          <div class="form_row">
+            <label for="subscriber_language"><%= t('subscribe_form.language') %><star class='red'>*</star>:</label>
+            <%= select_tag 'subscriber[language]', options_for_select(
+                  [[t('subscribe_form.all_languages'), 'all'],
+                   [t('subscribe_form.en_language'), 'en'],
+                   [t('subscribe_form.ru_language'),'ru']], :selected =>  I18n.locale.to_s) %>
+            <div class="clear"></div>
+            <div class="error_row"></div>
+          </div>
+          <hr/>
+          <div class="subscribe_notification">
+              <%= t('subscribe_form.unsubscribe_notification') %>
+          </div>
+      <% end %>
     </div>
 
     <script type="text/javascript">
         $(function () {
             $('#subscribe_dialog').dialog({ modal:true, resizable:false, autoOpen:false,
-                title:'<%= t(:subscribe_dialog) %>', width:330,
+                title:'<%= t(:subscribe_dialog) %>', width:400,
                 buttons:[
                     {
-                        text: '<%= t(:cancel) %>',
+                        text:'<%= t('helpers.links.subscribe') %>',
                         click:function () {
-                            $(this).dialog('close')
+                            show_loading();
+                            $('#subscribe_dialog').dialog('close');
+                            $('#subscribe_form').submit();
+                        }
+                    },
+                    {
+                        text:'<%= t(:cancel) %>',
+                        click:function () {
+                            $(this).dialog('close');
                         }
                     }
                 ]})

@@ -1,0 +1,10 @@
+<% if @success %>
+    $('#subscribe_dialog').dialog('close');
+    $('#subscribe_form .error_row').html('');
+    $("#subscribe_form input[type='text']").val('');
+    $('#system_dialog').html('<%= t('subscribe_form.subscribe_success') %>');
+    $('#system_dialog').dialog('open');
+<% else %>
+    $('#subscribe_dialog').dialog('open');
+    $('#subscriber_email').siblings('.error_row').html('<%=j @subscriber.errors[:email].join(' , ') %>');
+<% end %>

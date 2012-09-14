@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  NOT_REMEMBER_ACTIONS = %w(change_language send_email)
+  NOT_REMEMBER_ACTIONS = %w(change_language send_email subscribe)
   protect_from_forgery
   before_filter :set_locale
   after_filter :save_return_url
@@ -14,4 +14,5 @@ class ApplicationController < ActionController::Base
   def save_return_url
     session[:return_path] = request.path unless NOT_REMEMBER_ACTIONS.include?(action_name)
   end
+
 end

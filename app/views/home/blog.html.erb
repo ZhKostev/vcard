@@ -1,5 +1,7 @@
 <div class="layout-50 clear-fix overflow-fix page-4">
-  <h3 class="center_align"><%= t(:contents) %></h3>
+  <%= render :partial => 'shared/blog_title', :locals => {:title => t(:contents),
+                                                          :subscribe_url => blog_url(:locale => I18n.locale), :subscribe_link_text => t('helpers.links.subscribe')
+  } %>
   <hr class="standard_hr"/>
 
   <% if @rubrics.present? && @rubrics.any? %>

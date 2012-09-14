@@ -25,6 +25,17 @@ ru:
   system_dialog: Сообщение от сайта
   cancel: Отмена
   subscribe_dialog: Подписаться на обновления
+  subscribe_congratulations: Подтверждение Подписки
+  success_unsubscribe: Подписка на мой блог аннулирована. Уведомления не будут вас беспокоить.
+  fail_unsubscribe: Что-то пошло не так. Вы уже отписались от оповещении раньше.
+  subscribe_form:
+    all_languages: Все языки (Английский+Русский)
+    en_language: Англйский
+    ru_language: Русский
+    email: Email
+    language: Язык
+    unsubscribe_notification: У вас будет возможномсть описаться от уведомлении по ссылке, которая будет находиться в каждом приходящем письме.
+    subscribe_success: Заявка на рассылку успешно зарегистрирована. На email выслано пробное уведомление.
   devise:
     failure:
       user:
@@ -47,3 +58,11 @@ ru:
   time:
     formats:
       default: "%d %m %Y"
+  activerecord:
+    errors:
+      models:
+        subscribe:
+          attributes:
+            email:
+              blank: Не может быть пустым
+              invalid: Формат неверен

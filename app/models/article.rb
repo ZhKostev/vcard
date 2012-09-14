@@ -54,7 +54,7 @@ class Article < ActiveRecord::Base
     super(attributes, options = {})
   end
 
-  #create version for front
+  #create version for front  and send notification
   def publish!
     if (clone = self.front_version)
       clone.update_attributes!(self.attributes)
@@ -64,6 +64,7 @@ class Article < ActiveRecord::Base
     clone.update_column(:original_id, self.id)
     clone.rubrics.destroy_all
     clone.rubrics << self.rubrics
+    send_notifications
   end
 
 
@@ -82,5 +83,13 @@ class Article < ActiveRecord::Base
 
   def short_summary_en
     truncate(short_description_en.present? ? short_description_en : strip_tags(body_en), :length => 400)
+  end
+
+  private
+  def send_notifications
+    language_array = []
+    language_array << 'en' if self.has_english_translation?
+    language_array << 'ru' if self.has_russian_translation?
+    subscribers = Subscribe.for_language(language_array)
   end
 end

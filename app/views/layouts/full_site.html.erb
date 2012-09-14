@@ -117,7 +117,9 @@
 
 </div>
 <!-- /Footer -->
-<div id="system_dialog" style="display: none;"></div>
+<%= render :partial => 'shared/system_dialog' %>
+<%= render :partial => 'shared/loading_gif' %>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -130,16 +132,6 @@
         };
 
         $('.cascade').cascade(page);
-        $('#system_dialog').dialog({ modal:true, resizable:false, autoOpen:false,
-            title:'<%= t(:system_dialog) %>', width:330,
-            buttons:[
-                {
-                    text:'Ok',
-                    click:function () {
-                        $(this).dialog('close')
-                    }
-                }
-            ]})
     });
 
 </script>

@@ -21,12 +21,18 @@ Vcard::Application.routes.draw do
     match '/resume' => 'home#resume'
     match '/contact' => 'home#contact'
     match '/blog' => 'home#blog'
+    match '/blog/subscribe' => 'blog#subscribe', :as => :subscribe_to_blog
+    match '/blog/unsubscribe/:id' => 'blog#unsubscribe', :as => :unsubscribe_from_blog
     match '/blog/:id' => 'blog#show_rubric', :as => :show_rubric
     match '/blog/article/:id' => 'blog#show_article', :as => :show_article
-    match '/blog/subscribe' => 'blog#subscribe', :as => :subscribe_to_blog
     match '/change_language' => 'home#change_language'
     match '/contact/send_email' => 'contact#send_email'
   end
+
+  # Any routes that aren't defined above here go to the 404
+  match "*a", :to => "blog#routing_error"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

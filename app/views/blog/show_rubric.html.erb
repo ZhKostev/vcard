@@ -1,6 +1,6 @@
 <%= render :partial => 'shared/blog_title', :locals => {:title => @rubric.title,
-                                                        :url => blog_url, :link_text => t('helpers.links.back_to_content'),
-                                                        :subscribe_url => blog_url, :subscribe_link_text => t('helpers.links.subscribe')
+                                                        :url => blog_url(:locale => I18n.locale), :link_text => t('helpers.links.back_to_content'),
+                                                        :subscribe_url => blog_url(:locale => I18n.locale), :subscribe_link_text => t('helpers.links.subscribe')
 } %>
 
 <hr class="standard_hr" style="margin-bottom: 15px;"/>
