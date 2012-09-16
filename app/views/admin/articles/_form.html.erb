@@ -36,6 +36,23 @@
 
     <div class="clear"></div>
 
+    <h3>
+      Please use following structures to format posts:
+    </h3>
+
+    <div class="left" style="width: 300px">
+      <pre>
+      <%= %Q(
+      <pre>
+        <code lang="ruby">
+            Place ruby code here.
+        </code>
+      </pre>) %>
+      </pre>
+    </div>
+
+
+
     <%= form_field(f, :cktext_area, :body_ru, :style => 'height:300px; ') %>
 
     <%= form_field(f, :cktext_area, :body_en, :style => 'height:300px;') %>

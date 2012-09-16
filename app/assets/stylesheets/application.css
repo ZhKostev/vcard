@@ -13,4 +13,5 @@
  *= require page
  *= require common_styles
  *= require blog
+ *= require coderay
 */
