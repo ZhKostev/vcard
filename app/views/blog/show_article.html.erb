@@ -7,9 +7,18 @@
 
 
 <hr class="standard_hr" style="margin-bottom: 15px;"/>
-<div class="scroll_box" style="max-height: 355px; ">
+<div class="scroll_box" style="max-height: 315px; ">
   <div>
-    <%== coderay(@article.body) %>
-
+    <%== prepare_text(@article.body) %>
+    <% if @article.related_articles.any? %>
+        <div class="related_articles">
+          <h2><%= t(:related_artiles) %>:</h2>
+          <ul style="color: white;">
+            <% @article.related_articles.each do |article| %>
+                <li><%= link_to article.title, show_article_path(:id => article.to_param, :locale => I18n.locale) %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
   </div>
 </div>

@@ -114,3 +114,15 @@
     text-decoration: none !important;
   }
 }
+
+.related_articles{
+  ul{
+    color: white;
+    a{
+      text-decoration: underline !important;
+    }
+    a:hover{
+      text-decoration: none !important;
+    }
+  }
+}

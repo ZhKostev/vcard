@@ -66,6 +66,16 @@
     <div class="form_column one_of_two">
       <%= form_field(f, :text_area, :short_description_en, :style => 'height:80px;') %>
     </div>
+    <div class="clear"></div>
+    <div class="form_column one_of_two" style="min-height: 55px">
+      <div style="padding: 5px 0px 10px; line-height: 1.6em; ">
+        <label>Related articles</label>
+        <%= f.select :articles, options_from_collection_for_select(@articles, :id, :title, params[:articles] || f.object.articles.map(&:id) ),
+                   {:prompt => "Please select related articles"},
+                   {:multiple => true, :size => 5} %>
+      </div>
+    </div>
+
 
 <% end %>
 

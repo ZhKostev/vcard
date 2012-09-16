@@ -1,5 +1,5 @@
 class Admin::ArticlesController < Admin::ApplicationController
-  before_filter :find_rubrics, :only => [:new, :edit, :create, :update]
+  before_filter :find_variables_for_form, :only => [:new, :edit, :create, :update]
   after_filter :publish_article, :only => [:create, :update]
 
   def index
@@ -39,8 +39,9 @@ class Admin::ArticlesController < Admin::ApplicationController
   end
 
   private
-  def find_rubrics
+  def find_variables_for_form
     @rubrics = Rubric.all
+    @articles = Article.originals.all
   end
 
   #publish article if it valid and admin submit as "Publish"

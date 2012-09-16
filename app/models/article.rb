@@ -25,6 +25,10 @@ class Article < ActiveRecord::Base
 
   belongs_to :original, :class_name => "Article", :foreign_key => :original_id
   has_and_belongs_to_many :rubrics, :uniq => true
+  has_and_belongs_to_many(:articles,
+                          :join_table => "articles_connections",
+                          :foreign_key => "article_a_id",
+                          :association_foreign_key => "article_b_id")
   friendly_id :title_en, use: :slugged
 
   scope :originals, where(:original_id => nil)
@@ -51,6 +55,12 @@ class Article < ActiveRecord::Base
         self.rubrics << Rubric.find_by_id(r_id)
       end
     end
+    if (articles = attributes.delete(:articles))
+      self.articles.destroy_all
+      articles.select{|a| a.present?}.each do |article_id|
+        self.articles << Article.find_by_id(article_id)
+      end
+    end
     super(attributes, options = {})
   end
 
@@ -68,8 +78,12 @@ class Article < ActiveRecord::Base
   end
 
 
+  def related_articles
+    Article.for_current_locale.where("id IN (?)", (self.original || self).articles.map{|a| a.front_version.try(:id)}.compact)
+  end
+
   def front_version
-    Article.find_by_original_id(self.id)
+    Article.for_current_locale.find_by_original_id(self.id)
   end
 
   #return current article's status

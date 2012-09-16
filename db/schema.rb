@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828151808) do
+ActiveRecord::Schema.define(:version => 20120916190927) do
 
   create_table "articles", :force => true do |t|
     t.integer  "original_id"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(:version => 20120828151808) do
 
   add_index "articles", ["original_id"], :name => "articles_front_version_id_index"
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
+
+  create_table "articles_connections", :force => true do |t|
+    t.integer "article_a_id", :null => false
+    t.integer "article_b_id", :null => false
+  end
+
+  add_index "articles_connections", ["article_a_id"], :name => "article_a_id_index"
+  add_index "articles_connections", ["article_b_id"], :name => "article_b_id_index"
 
   create_table "articles_rubrics", :id => false, :force => true do |t|
     t.integer "article_id", :null => false
