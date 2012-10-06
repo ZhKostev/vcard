@@ -11,19 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916190927) do
+ActiveRecord::Schema.define(:version => 20120925152929) do
 
   create_table "articles", :force => true do |t|
     t.integer  "original_id"
-    t.string   "meta_title_ru"
     t.string   "meta_description_ru"
-    t.string   "meta_keywords_ru"
     t.string   "title_ru"
     t.text     "short_description_ru"
     t.text     "body_ru"
-    t.string   "meta_title_en"
     t.string   "meta_description_en"
-    t.string   "meta_keywords_en"
     t.string   "title_en"
     t.text     "short_description_en"
     t.text     "body_en"
@@ -67,6 +63,22 @@ ActiveRecord::Schema.define(:version => 20120916190927) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "rubrics", :force => true do |t|
     t.string   "title_en"

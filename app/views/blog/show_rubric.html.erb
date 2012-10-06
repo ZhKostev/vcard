@@ -16,7 +16,7 @@
             <%= l article.updated_at %>
           </div>
         </div>
-        <%== article.short_summary %><%= link_to t(:read_more), show_article_path(:id => article.to_param, :locale => I18n.locale), :class => 'read_more_link' %>
+        <%== article.short_summary %><%= link_to t("helpers.links.read_more"), show_article_path(:id => article.to_param, :locale => I18n.locale), :class => 'read_more_link' %>
         <hr class="reparation_hr">
     <% end %>
   </div>

@@ -21,6 +21,7 @@ class Article < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
   include ActionView::Helpers::TextHelper
   include Modules::ModelTranslation
+  include Rails.application.routes.url_helpers
   extend FriendlyId
 
   belongs_to :original, :class_name => "Article", :foreign_key => :original_id
@@ -104,6 +105,14 @@ class Article < ActiveRecord::Base
     language_array = []
     language_array << 'en' if self.has_english_translation?
     language_array << 'ru' if self.has_russian_translation?
-    subscribers = Subscribe.for_language(language_array)
+    subscribers = Subscribe.for_language(language_array).all
+    send_email_notifications(subscribers)
   end
+
+  def send_email_notifications(subscribers, options = {})
+    subscribers.each do |subscriber|
+      SubscribeNotificationMailer.article_save_or_update_notice(subscriber, show_article_url(self)).deliver
+    end
+  end
+  handle_asynchronously :send_email_notifications
 end

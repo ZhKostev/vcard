@@ -17,10 +17,12 @@
   <tr>
     <td style="padding: 0 0 20px 30px;vertical-align: top;">
       <div class="small_bottom_text" style="vertical-align: bottom; color: #534731; font-size: 12px">
-        <% if @language.present? && @language == 'ru' %>
-            Вы можете отписаться проследовав по этой ссылке: <a href="<%= unsubscribe_from_blog_url(:id => @subscriber.id) %>" style="color: #346585">Отписаться!</a>
-      <% else %>
-            You can unsubscribe by this link: <a href="<%= unsubscribe_from_blog_url(:id => @subscriber.id) %>" style="color: #346585">Unsubscribe!</a>
+        <% if I18n.locale == :ru %>
+            Вы можете отписаться проследовав по этой ссылке:
+            <a href="<%= unsubscribe_from_blog_url(:id => @subscriber.id) %>" style="color: #346585">Отписаться!</a>
+        <% else %>
+            You can unsubscribe by this link:
+            <a href="<%= unsubscribe_from_blog_url(:id => @subscriber.id) %>" style="color: #346585">Unsubscribe!</a>
         <% end %>
       </div>
     </td>

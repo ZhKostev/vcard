@@ -30,7 +30,7 @@
           </div>
 
           <div class="form-line">
-            <a href="javascript:void(0);" class="button block" id="contact-send" onclick="$('#contact_form').submit();">Send</a>
+            <a href="javascript:void(0);" class="button block" id="contact-send" onclick="submit_contact_form()">Send</a>
           </div>
     <% end %>
 
@@ -52,5 +52,10 @@
         else if (action == 'blur') {
             if (value == '') object.val(defaulValue);
         }
+    }
+
+    function submit_contact_form(){
+        show_loading();
+        $('#contact_form').submit();
     }
 </script>

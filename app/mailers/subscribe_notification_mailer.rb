@@ -4,7 +4,14 @@ class SubscribeNotificationMailer < ActionMailer::Base
 
   def subscribe_congratulations(subscriber)
     @subscriber = subscriber
-    @language = subscriber.language.to_s == 'ru' ? 'ru' : 'en'
+    I18n.locale = subscriber.language.to_s == 'ru' ? :ru : :en
     mail(:to => subscriber.email, :subject => t(:subscribe_congratulations))
+  end
+
+  def article_save_or_update_notice(subscriber, link)
+    @subscriber = subscriber
+    @url = link
+    I18n.locale = subscriber.language.to_s == 'ru' ? :ru : :en
+    mail(:to => subscriber.email, :subject => t(:zh_kostev_blog_update))
   end
 end

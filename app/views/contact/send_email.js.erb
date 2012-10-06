@@ -10,4 +10,6 @@ $('#system_dialog').html('<%= escape_javascript(
     @errors.map{|e| t(e.to_sym)}.join('<br/><br/>').html_safe
  end
  )%>');
+hide_loading();
 $('#system_dialog').dialog('open');
+

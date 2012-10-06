@@ -35,6 +35,7 @@ en:
   subscribe_congratulations: Subscribe Congratulation
   success_unsubscribe: "You have unsubscribed from my blog. No notifications will be sent to your email address"
   fail_unsubscribe: "Sorry, Smth goes wrong. You have already unsubscribed from my blog before."
+  zh_kostev_blog_update: News from Zh. Kostev blog
   subscribe_form:
     all_languages: All Languages (English+Russian)
     en_language: English

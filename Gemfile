@@ -13,6 +13,8 @@ gem "mini_magick"
 gem "default_value_for"
 gem "coderay"
 gem "RedCloth"
+gem 'delayed_job_active_record'
+gem 'daemons' #to run delay jobs
 
 # Gems used only for assets and not required
 # in production environments by default.

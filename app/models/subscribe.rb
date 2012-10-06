@@ -4,5 +4,5 @@ class Subscribe < ActiveRecord::Base
             :format => {:with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i},
             :uniqueness => true
 
-  scope :for_language, lambda{|l_a| where("language IN (?) OR language == 'all'", l_a)}
+  scope :for_language, lambda{|l_a| where("language IN (?) OR language = 'all'", l_a)}
 end

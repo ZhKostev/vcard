@@ -29,6 +29,7 @@ ru:
   subscribe_congratulations: Подтверждение Подписки
   success_unsubscribe: Подписка на мой блог аннулирована. Уведомления не будут вас беспокоить.
   fail_unsubscribe: Что-то пошло не так. Вы уже отписались от оповещении раньше.
+  zh_kostev_blog_update: "[Zh Kostev блог] Обновление статей"
   subscribe_form:
     all_languages: Все языки (Английский+Русский)
     en_language: Англйский
