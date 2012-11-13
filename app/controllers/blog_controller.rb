@@ -6,7 +6,7 @@ class BlogController < ApplicationController
   end
 
   def show_article
-    @article = Article.front_versions.find(params[:id])
+    @article = Article.front_versions.find(params[:id]) rescue (redirect_to blog_url, :status => 404)
   end
 
   def subscribe

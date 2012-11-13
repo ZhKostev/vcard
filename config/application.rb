@@ -44,5 +44,9 @@ module Vcard
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
   end
 end
+
+INTERNAL_SERVER_ERROR_EMAIL_RECIPIENTS = %w{zh.kostev@gmail.com mustang1365@mail.ru}
+

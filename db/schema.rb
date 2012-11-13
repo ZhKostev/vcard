@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20120925152929) do
     t.string   "title_en"
     t.text     "short_description_en"
     t.text     "body_en"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "slug"
     t.boolean  "has_russian_translation", :null => false
     t.boolean  "has_english_translation", :null => false
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20120925152929) do
   create_table "rubrics", :force => true do |t|
     t.string   "title_en"
     t.string   "title_ru"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "slug"
   end
 
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(:version => 20120925152929) do
     t.string   "email",               :default => "", :null => false
     t.string   "encrypted_password",  :default => "", :null => false
     t.datetime "remember_created_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

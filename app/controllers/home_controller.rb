@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 
   def blog
     if request.xhr?
-      @rubrics = Rubric.with_published_articles
+      @rubrics = Rubric.with_published_articles.uniq
     else
       redirect_to "#{root_url}#{I18n.locale}#!/blog"
     end

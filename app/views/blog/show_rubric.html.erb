@@ -4,15 +4,14 @@
 } %>
 
 <hr class="standard_hr" style="margin-bottom: 15px;"/>
-<div class="scroll_box" style="max-height: 355px; ">
+<div class="scroll_box" style="height: 355px; ">
   <div>
     <% @rubric.articles.for_current_locale.front_versions.each do |article|%>
         <div class="article_head">
           <div class="left article_title">
-            <%= article.title.humanize%>
+            <%= link_to article.title.humanize, show_article_path(:id => article.to_param, :locale => I18n.locale)%>
           </div>
           <div class="right article_date">
-            <%# image_tag('images/icons/calendar.png') %>
             <%= l article.updated_at %>
           </div>
         </div>

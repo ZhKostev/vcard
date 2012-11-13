@@ -5,6 +5,7 @@
 <head>
   <title><%= t :zhenya_kostev %></title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="description" content="<%= I18n.locale.to_s == 'ru' ? "ZhK Костев Евгений rails разработчик ruby" : "ZhK Kostev Zhenya Eugene rails developer ruby" %>">
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -13,34 +14,36 @@
 <body class="background-wood">
 
 <!-- Header -->
-<div class="header main box-center clear-fix">
+<header>
+  <div class="header main box-center clear-fix">
 
-  <div class="layout-4060 clear-fix overflow-fix">
+    <div class="layout-4060 clear-fix overflow-fix">
 
-    <div class="layout-4060-left">
-      <a href="#!/main" class="header-logo-link"></a>
+      <div class="layout-4060-left">
+        <a href="<%= I18n.locale %>/#!/main" class="header-logo-link"></a>
 
-      <h1 style="font-size:45px;"><%= t :zhenya_kostev %></h1>
-      <h5><%= t :speciality %></h5>
-    </div>
+        <h1 style="font-size:45px;"><%= t :zhenya_kostev %></h1>
+        <h5><%= t :speciality %></h5>
+      </div>
 
-    <div class="layout-4060-right">
-      <ul class="no-list header-menu">
-        <li class="header-menu-mail">
-          <a href="mailto:zh.kostev@gmail.com">zh.kostev@gmail.com</a>
-        </li>
-        <li class="header-menu-russian">
-          <%= link_to '', '/change_language?change_language=ru' %>
-        </li>
-        <li class="header-menu-english">
-          <%= link_to '', '/change_language?change_language=en' %>
-        </li>
-      </ul>
+      <div class="layout-4060-right">
+        <ul class="no-list header-menu">
+          <li class="header-menu-mail">
+            <a href="mailto:zh.kostev@gmail.com">zh.kostev@gmail.com</a>
+          </li>
+          <li class="header-menu-russian">
+            <%= link_to '', '/change_language?change_language=ru' %>
+          </li>
+          <li class="header-menu-english">
+            <%= link_to '', '/change_language?change_language=en' %>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
   </div>
-
-</div>
+</header>
 <!-- /Header -->
 
 
@@ -92,10 +95,6 @@
       <div class="cascade-window-content"></div>
       <!-- /Page content -->
 
-      <!-- Footer -->
-      <div class="cascade-window-footer"></div>
-      <!-- /Footer -->
-
     </div>
     <!-- /Window -->
 
@@ -106,17 +105,7 @@
 <!-- /Content -->
 
 
-<!-- Footer -->
-<div class="footer">
 
-  <hr class="footer-line"/>
-
-  <div class="main box-center layout-7030 clear-fix overflow-fix" style="text-align: center">
-    <%= t :minsk %>, 2012
-  </div>
-
-</div>
-<!-- /Footer -->
 <%= render :partial => 'shared/system_dialog' %>
 <%= render :partial => 'shared/loading_gif' %>
 

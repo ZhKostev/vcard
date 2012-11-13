@@ -35,7 +35,7 @@ class Article < ActiveRecord::Base
   scope :originals, where(:original_id => nil)
   scope :front_versions, where("original_id IS NOT NULL")
 
-  validates :title_ru, :title_en, :presence => true
+  validates :title_ru, :presence => true
 
   default_value_for :has_russian_translation, true
   default_value_for :has_english_translation, false
@@ -67,7 +67,7 @@ class Article < ActiveRecord::Base
 
   #create version for front  and send notification
   def publish!
-    if (clone = self.front_version)
+    if (clone = Article.find_by_original_id(self.id))
       clone.update_attributes!(self.attributes)
     else
       clone = Article.create!(self.attributes)
@@ -75,7 +75,7 @@ class Article < ActiveRecord::Base
     clone.update_column(:original_id, self.id)
     clone.rubrics.destroy_all
     clone.rubrics << self.rubrics
-    send_notifications
+   # send_notifications
   end
 
 
@@ -89,7 +89,7 @@ class Article < ActiveRecord::Base
 
   #return current article's status
   def status
-    self.front_version ? 'Published' : 'Draft'
+    Article.find_by_original_id(self.id).present? ? 'Published' : 'Draft'
   end
 
   def short_summary_ru
@@ -114,5 +114,5 @@ class Article < ActiveRecord::Base
       SubscribeNotificationMailer.article_save_or_update_notice(subscriber, show_article_url(self)).deliver
     end
   end
-  handle_asynchronously :send_email_notifications
+  #handle_asynchronously :send_email_notifications
 end

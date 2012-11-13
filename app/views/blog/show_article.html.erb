@@ -1,4 +1,7 @@
-<h3 class="center_align"><%= @article.title.humanize %></h3>
+<%= render :partial => 'shared/blog_title', :locals => {:title => @article.title.humanize,
+                                                        :url => blog_url(:locale => I18n.locale), :link_text => t('helpers.links.back_to_content'),
+                                                        :subscribe_url => blog_url(:locale => I18n.locale), :subscribe_link_text => t('helpers.links.subscribe')
+} %>
 <hr class="standard_hr"/>
 <div class="white_text">
   <%= t(:rubrics) %>:
@@ -7,9 +10,9 @@
 
 
 <hr class="standard_hr" style="margin-bottom: 15px;"/>
-<div class="scroll_box" style="max-height: 315px; ">
+<div class="scroll_box" style="height: 315px; ">
   <div>
-    <%== prepare_text(@article.body) %>
+    <%== prepare_text(@article.body.gsub(/&#39;|&quot;/,"'").gsub("&gt;", ">")) %>
     <% if @article.related_articles.any? %>
         <div class="related_articles">
           <h2><%= t(:related_artiles) %>:</h2>
